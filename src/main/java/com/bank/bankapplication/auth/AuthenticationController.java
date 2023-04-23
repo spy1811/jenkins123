@@ -18,7 +18,7 @@ public class AuthenticationController {
 
     private final AuthenticationService service;
     private final TransactionService transactionService;
-    @CrossOrigin(origins= {"http://localhost:3000","http://3.135.228.111:8081"})
+    @CrossOrigin(origins= {"http://localhost:3000","http://13.59.119.154:8081"})
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request){
         return  ResponseEntity.ok(service.register(request));
@@ -26,24 +26,24 @@ public class AuthenticationController {
     }
 
 
-    @CrossOrigin(origins= {"http://localhost:3000","http://3.135.228.111:8081/"})
+    @CrossOrigin(origins= {"http://localhost:3000","http://13.59.119.154:8081/"})
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
         return  ResponseEntity.ok(service.authenticate(request));
     }
-    @CrossOrigin(origins= {"http://localhost:3000","http://3.135.228.111:8081/"})
+    @CrossOrigin(origins= {"http://localhost:3000","http://13.59.119.154:8081/"})
     @PostMapping("/validate")
     public ResponseEntity<String> validateUser(@RequestBody ValidateRequest request){
         return ResponseEntity.ok(service.validateUsert(request));
     }
 
-    @CrossOrigin(origins= {"http://localhost:3000","http://3.135.228.111:8081/"})
+    @CrossOrigin(origins= {"http://localhost:3000","http://13.59.119.154:8081/"})
     @GetMapping("/getTransaction")
     public List<Transaction> getTransaction(){
         return transactionService.fetAll();
     }
 
-    @CrossOrigin(origins= {"http://localhost:3000","http://3.135.228.111:8081/"})
+    @CrossOrigin(origins= {"http://localhost:3000","http://13.59.119.154:8081/"})
     @PostMapping("/byDate")
     public List<Transaction> getByDate(@RequestBody DateRequest tdata) throws ParseException {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(tdata.getTdate()));
@@ -51,7 +51,7 @@ public class AuthenticationController {
         return transactionService.findByDate(new SimpleDateFormat("yyyy-MM-dd").parse(tdata.getTdate()));
     }
 
-    @CrossOrigin(origins= {"http://localhost:3000","http://3.135.228.111:8081/"})
+    @CrossOrigin(origins= {"http://localhost:3000","http://13.59.119.154:8081/"})
     @PostMapping("/byDateBetween")
     public List<Transaction> byDateBetween(@RequestBody DateRequestBetween tdata) throws ParseException {
         return transactionService.findByDataBetween(
@@ -60,7 +60,7 @@ public class AuthenticationController {
         );
     }
 
-    @CrossOrigin(origins= {"http://localhost:3000","http://3.135.228.111:8081/"})
+    @CrossOrigin(origins= {"http://localhost:3000","http://13.59.119.154:8081/"})
     @GetMapping("/topRecord")
     public List<Transaction> topRecord() {
         return transactionService.findLast();
